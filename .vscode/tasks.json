@@ -1,0 +1,58 @@
+{
+    "tasks": [
+        {
+            "label": "compile",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "src/main.c",
+                "src/gcd_run.c",
+                "src/gcd_util.c",
+                "-ansi",
+                "-ogcd"
+            ],
+            "group": {
+                "kind":"build", 
+                "default":true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true
+            }
+        },
+        {
+            "label": "test-compile",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-Isrc",
+                "-Itests/lib",
+                "-Itests",
+                "src/gcd_run.c",
+                "src/gcd_util.c",
+                "tests/lib/CuTest.c",
+                "tests/lib/std_swapper.c",
+                "tests/main.test.c",
+                "tests/gcd_util.test.c",
+                "-otests",
+                "-ansi"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "test-run",
+            "type": "shell",
+            "dependsOn": "test-compile",
+            "command": "tests",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+    ],
+    "version": "2.0.0"
+}
