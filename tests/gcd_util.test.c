@@ -23,11 +23,20 @@ void testEuclideanMethod(CuTest *tc) {
 }
 
 
+void testFillArray(CuTest *tc) {
+    int arr[] = {0,0,0,0,0,0,0};
+    FillArrayIncremented(arr,7,1,1 );
+    CuAssertIntEquals(tc, arr[0], 1);
+    CuAssertIntEquals(tc, arr[6], 7);
+}
+
+
 
 
 CuSuite * getGcdUtilTestSuite() {
     CuSuite *suite = CuSuiteNew();
     SUITE_ADD_TEST(suite, testEuclideanMethod);
+    SUITE_ADD_TEST(suite, testFillArray);
     return suite; 
 }
 

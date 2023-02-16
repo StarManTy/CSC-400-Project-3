@@ -19,6 +19,18 @@ int CalculateGcd_Euclidean(int n1, int n2);
 
 
 /*!
+    Fills an array with a set of values starting at start_val and incrementing by increment.
+
+    \param array A pointer to the array to fill.
+    \param l_array The length of the array.
+    \param start_val The starting value.
+    \param increment The quantity to increment the value by at each index.
+
+*/
+void FillArrayIncremented(int * array, int l_array, int start_val, int increment) ;
+
+
+/*!
     Calculates a set of GCDs of a given array and prints each time it finds a GCD greater than the threshold value. 
 
     It prints in the following format:
@@ -28,15 +40,15 @@ int CalculateGcd_Euclidean(int n1, int n2);
     It will check every combination of array1 and array2.
 
     \param array1 An array of numbers for one input into the GCD.
-    \param l_array1 The length of array1.
-    \param array2 An array of numbers for one input into the gcd.
+    \param i_array1 The index to start reading in array 1
+    \param l_array1 The number of items to read in array1.
+    \param array2 An array of the second numbers that will be input into the gcd. 
     \param l_array2 The length of array2.
     \param print_threshhold The threshhold that will cause a call to printf.
     \param thread_number The thread number to print.
 
 
 */
-
-int CalculateSetAndPrint(int * array1, int l_array1, int* array2, int l_array2, int print_threshhold, int thread_number);
+void CalculateSetAndPrint(int * array1, int i_array1, int l_array1, int* array2, int l_array2, int print_threshhold, int thread_number);
 
 #endif
