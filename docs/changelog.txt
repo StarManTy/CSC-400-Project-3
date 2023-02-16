@@ -1,4 +1,10 @@
 
+2/16/2023 : Karl and Ty
+- Added FillArrayIncremented for generating the 'Y' array.
+- Tested FillArrayIncremented
+- Added CalculateSetAndPrint which will be the actual function executed by threads.
+- Program compiles and prints GCDS (single threaded)
+
 
 2/14/2023 : Karl
 
