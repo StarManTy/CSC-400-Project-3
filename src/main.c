@@ -13,6 +13,15 @@ int main(int argc, char * argv[]) {
     int Y[100];
 
     FillArrayIncremented(Y, 100, 123456780, 1);
+
+    BENCH_ThreadCalcGCD result1 = ThreadCalcGCD(2, X, 24, Y, 100);
+    BENCH_ThreadCalcGCD result2 = ThreadCalcGCD(4, X, 24, Y, 100);
+    BENCH_ThreadCalcGCD result3 = ThreadCalcGCD(6, X, 24, Y, 100);
+    BENCH_ThreadCalcGCD result4 = ThreadCalcGCD(8, X, 24, Y, 100);
+
+    printBench(&result1);
+    printBench(&result2);
+    printBench(&result3);
+    printBench(&result4);
     
-    CalculateSetAndPrint(X, 0, 24, Y, 100, 100, 1);
 }
