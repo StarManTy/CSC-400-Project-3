@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 
+#define NUMBER_OF_TIMES_TO_AVERAGE 100
 
 /*! Program entry point. */
 int main(int argc, char * argv[]) {
@@ -14,14 +15,16 @@ int main(int argc, char * argv[]) {
 
     FillArrayIncremented(Y, 100, 123456780, 1);
 
-    BENCH_ThreadCalcGCD result1 = ThreadCalcGCD(2, X, 24, Y, 100);
-    BENCH_ThreadCalcGCD result2 = ThreadCalcGCD(4, X, 24, Y, 100);
-    BENCH_ThreadCalcGCD result3 = ThreadCalcGCD(6, X, 24, Y, 100);
-    BENCH_ThreadCalcGCD result4 = ThreadCalcGCD(8, X, 24, Y, 100);
+    BENCH_ThreadCalcGCD result0 = ThreadCalcGCDAverage(1, X, 24, Y, 100, NUMBER_OF_TIMES_TO_AVERAGE);
+    BENCH_ThreadCalcGCD result1 = ThreadCalcGCDAverage(2, X, 24, Y, 100, NUMBER_OF_TIMES_TO_AVERAGE);
+    BENCH_ThreadCalcGCD result2 = ThreadCalcGCDAverage(4, X, 24, Y, 100, NUMBER_OF_TIMES_TO_AVERAGE);
+    BENCH_ThreadCalcGCD result3 = ThreadCalcGCDAverage(6, X, 24, Y, 100, NUMBER_OF_TIMES_TO_AVERAGE);
+    BENCH_ThreadCalcGCD result4 = ThreadCalcGCDAverage(8, X, 24, Y, 100, NUMBER_OF_TIMES_TO_AVERAGE);
 
-    printBench(&result1);
-    printBench(&result2);
-    printBench(&result3);
-    printBench(&result4);
+    printBenchAverage(&result0, NUMBER_OF_TIMES_TO_AVERAGE);
+    printBenchAverage(&result1, NUMBER_OF_TIMES_TO_AVERAGE);
+    printBenchAverage(&result2, NUMBER_OF_TIMES_TO_AVERAGE);
+    printBenchAverage(&result3, NUMBER_OF_TIMES_TO_AVERAGE);
+    printBenchAverage(&result4, NUMBER_OF_TIMES_TO_AVERAGE);
     
 }

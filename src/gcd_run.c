@@ -13,7 +13,9 @@ BENCH_ThreadCalcGCD ThreadCalcGCD(int n_threads, int* arr1, int l_arrary_1, int 
 
     BENCH_ThreadCalcGCD return_bench;
 
-    return_bench.from = (double) clock();
+    double from, to;
+    from = (double) clock();
+
     return_bench.thread_count = n_threads;
 
 
@@ -45,11 +47,28 @@ BENCH_ThreadCalcGCD ThreadCalcGCD(int n_threads, int* arr1, int l_arrary_1, int 
     free(datas);
     free(thread_ids);
 
-    return_bench.to = (double) clock() ;
+    to = (double) clock();
+
+    return_bench.time = to - from;
 
     return return_bench;
 }
 
+
+
+BENCH_ThreadCalcGCD ThreadCalcGCDAverage(int n_threads, int* arr1, int l_array_1, int *arr2, int l_array2, int number_of_times) {
+    BENCH_ThreadCalcGCD result;
+    result.thread_count = n_threads;
+    result.time = 0;
+    int i = 0;
+    while(i < number_of_times) {
+        BENCH_ThreadCalcGCD inner_result = ThreadCalcGCD(n_threads, arr1, l_array_1, arr2, l_array2);
+        result.time += inner_result.time;
+        i++;
+    }
+    result.time /= number_of_times;
+    return result;
+}
 
 void * threadrunner(void * dataParam) {
     THREAD_DATA * data = (THREAD_DATA*) dataParam;
@@ -66,6 +85,6 @@ void * threadrunner(void * dataParam) {
 
 
 
-void printBench(BENCH_ThreadCalcGCD * bench) {
-    printf("\n\n%d threads completed in %f\n", bench->thread_count, (bench->to - bench->from)/CLOCKS_PER_SEC);
+void printBenchAverage(BENCH_ThreadCalcGCD * bench, int number_of_times) {
+    printf("\n\n%d threads completed in an average of %f seconds over %d tests.\n", bench->thread_count, (bench->time)/CLOCKS_PER_SEC, number_of_times);
 }
