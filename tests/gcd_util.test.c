@@ -20,6 +20,15 @@ void testEuclideanMethod(CuTest *tc) {
 
     result = CalculateGcd_Euclidean(18, 24);
     CuAssertIntEquals(tc, 6, result);
+
+    result = CalculateGcd_Euclidean(47655, 123456808);
+    CuAssertIntEquals(tc, 353, result);
+
+    result = CalculateGcd_Euclidean(47655, 123456825);
+    CuAssertIntEquals(tc, 135, result);
+
+    result = CalculateGcd_Euclidean(235, 123456780);
+    CuAssertIntEquals(tc, 235, result);
 }
 
 
